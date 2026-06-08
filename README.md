@@ -8,7 +8,8 @@ A full-stack event management platform built with Laravel, themed around the cul
 
 ## 📸 Preview
 
-> Landing page with video background, event listings, and admin dashboard.
+<img width="939" height="472" alt="Apulian" src="https://github.com/user-attachments/assets/7b83a7f2-9468-4d50-aad5-a5610179b7a0" />
+
 
 ---
 
