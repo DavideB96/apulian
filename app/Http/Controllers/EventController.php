@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class EventController extends Controller
 {
@@ -47,7 +48,10 @@ class EventController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('events', 'public');
+            $uploadedFile = Cloudinary::upload($request->file('image')->getRealPath(), [
+                'folder' => 'apulian/events'
+            ]);
+            $validated['image'] = $uploadedFile->getSecurePath();
         }
 
         $validated['user_id'] = auth()->id();
@@ -80,10 +84,10 @@ class EventController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            if ($event->image) {
-                Storage::disk('public')->delete($event->image);
-            }
-            $validated['image'] = $request->file('image')->store('events', 'public');
+            $uploadedFile = Cloudinary::upload($request->file('image')->getRealPath(), [
+                'folder' => 'apulian/events'
+            ]);
+            $validated['image'] = $uploadedFile->getSecurePath();
         }
 
         $event->update($validated);
@@ -93,10 +97,6 @@ class EventController extends Controller
 
     public function destroy(Event $event)
     {
-        if ($event->image) {
-            Storage::disk('public')->delete($event->image);
-        }
-
         $event->delete();
 
         return redirect()->route('events.index')->with('success', 'Evento eliminato con successo!');

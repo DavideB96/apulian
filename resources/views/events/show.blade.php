@@ -4,7 +4,7 @@
         {{-- HERO EVENTO --}}
         <div class="relative h-72 md:h-96 overflow-hidden">
             @if($event->image)
-            <img src="{{ asset('storage/' . $event->image) }}"
+            <img src="{{ $event->image }}"
                 alt="{{ $event->title }}"
                 class="w-full h-full object-cover">
             @else

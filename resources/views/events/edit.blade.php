@@ -74,7 +74,7 @@
                         <label class="block text-sm font-medium text-gray-700 mb-1">Immagine (opzionale)</label>
                         @if($event->image)
                             <div class="mb-2">
-                                <img src="{{ asset('storage/' . $event->image) }}"
+                                <img src="{{ $event->image }}"
                                      alt="Immagine attuale"
                                      class="h-32 rounded-lg object-cover">
                                 <p class="text-xs text-gray-500 mt-1">Immagine attuale — carica una nuova per sostituirla</p>

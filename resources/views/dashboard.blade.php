@@ -121,7 +121,7 @@
                 @foreach($registrations as $registration)
                 <div class="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition">
                     @if($registration->event->image)
-                    <img src="{{ asset('storage/' . $registration->event->image) }}"
+                    <img src="{{ $registration->event->image }}"
                         alt="{{ $registration->event->title }}"
                         class="w-full h-40 object-cover">
                     @else
